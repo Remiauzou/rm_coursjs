@@ -114,7 +114,7 @@ function verifieMotDePasse(evenement) {
     // Teste si input_mdp a au moins 12 caractères et incrémente si oui
     // On peut se passer des accolades quand il n'y a qu'une seule instruction après un seul if
     if ( mdp.length > 12 ) verification[0]++;
-
+    
 
     // Boucle pour vérifier chaque lettre du mot rentré
     for (let i = 0; i < mdp.length; i++) {
@@ -159,7 +159,7 @@ function verifieMotDePasse(evenement) {
         if( verification[i] === 0) ajouteErreur(i) ;
     }
 
- }
+}
 
 // Vérifie si la lettre en paramètre est un caractère spécial
 function estCaracSpécial(lettre) {
