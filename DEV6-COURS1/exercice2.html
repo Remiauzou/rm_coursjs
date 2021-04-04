@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ETAT DE L'EAU
+        // SCRIPT QUI DEMANDE A L'UTILISATEUR UNE TEMPERATURE
+        // RETOURNERA LES MESSAGES SUIVANTS SELON LES CONDITIONS
+        // température inférieure à zéro absolu, et supérieure à 10 000 - "c'est impossible, veuillez rentrer une autre valeur"
+        
+        // température entre 1000 et 10000 > "c'est du plasma"
+        // le reste : liquide, solide, gazeux
+
+        let temperature = prompt("Veuillez rentrer une température");
+
+        let message = "";
+
+        // Plus chaude
+        if( temperature >= 1000 && temperature <= 10000) {
+            message = "C'est du plasma";
+
+            // Gazeux
+        } else if( temperature >= 100 && temperature < 1000 ) {
+
+            message = "C'est un gaz";
+        // Liquide
+        } else if( temperature < 100 && temperature > 0  ) {
+
+            message = "C'est un liquide";
+        // Glace
+        } else if( temperature <=0 && temperature >= -273.15 ) {
+
+            message = "C'est de la glace";
+        // Impossible
+        } else {
+
+            message = "C\'est Superman";
+        }
+    </script>
+</body>
+</html>

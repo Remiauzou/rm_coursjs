@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEV6 - JS1</title>
+</head>
+<body>
+    
+
+<script>
+let nom, age, téléphone;
+let prénom = "Raphaël";
+
+    // alert('Bonjour le monde');
+    // prompt("Veuillez rentrer un nom");
+
+    // console.log('Bonjour le monde depuis la console');
+
+// "Ancienne" façon d'appeler une variable
+// var nom = prompt('Veuillez rentrer un nom :');
+// console.log(nom);
+
+// nom = prompt('Veuillez rentrer un nom :');
+// console.log(nom);
+
+// Par convention en majuscule
+const URL = 'http://dc6js.test';
+
+
+// Caractères autorisés
+let $variable, _variable;
+
+// Ecriture camel case ou non
+let variableCamelCase, variable_camel_case;
+
+// Types en JS
+// - Les nombres
+// - Les chaines de caractères
+// - Les booléens
+// - Les objets
+// - null
+// - undefined
+
+// - LES NOMBRES
+//  + - / * 
+//  modulo % 
+//  puissance :**
+
+let nombre = "25";
+// Force le typage en nombre
+// console.log(typeof Number(nombre) );
+
+
+// console.log(Math.ceil(1.5) );
+// console.log(Math.floor(1.5) );
+// console.log(Math.round(1.5) );
+// console.log(Math.abs(-50) );
+// console.log(Math.random() );
+
+
+// Pour les chaines de caractères
+// multiligne le `
+
+let chaineHTML = `
+<div>
+    <h1>Titre ${nombre}</h1>    
+</div>
+`;
+
+let chaine1 = "Bonjour ";
+let chaine2 = "le monde !!";
+
+// Methode équivalente à chaine1 + chaine2
+// console.log( chaine1.concat( chaine2 ) );
+
+// Explose la chaine en tableau
+// console.log( chaine2.split(' ') );
+
+// Donne la longueur d'une chaine
+// console.log(chaine2.length);
+
+
+// console.log( parseInt("160€") );
+// console.log( parseFloat("19.6%") );
+
+let rouge = 255;
+let vert = 128;
+let bleu = 100;
+
+// console.log( rouge.toString(16) );
+// console.log( vert.toString(16) );
+// console.log( bleu.toString(16) );
+
+
+// Essayez avec un replace() d'obtenir un nombre hexadécimal
+let chaineHEXA = "#FFFFFF";
+
+// console.log( chaineHEXA.replace("#","0x") );
+
+// console.log( Number("0x" + "ff") );
+
+
+// LES BOOLEENS
+let vrai = true; // ou = 1
+let faux = false; // ou = 1
+
+// console.log(!vrai);
+// console.log(!false);
+// console.log(typeof !false);
+
+// Comparaison sera forcément un type booléen
+// console.log( 25 > 12 );
+
+let expression1 = 25 < 12;
+// console.log( !expression1 );
+
+
+// Les tableaux :
+// Tableau indexé
+let tableau = [
+    "valeur1", // index 0
+    "valeur2", // index 1
+    "valeur3", // index 2
+    "valeur4", // index 2
+];
+
+// console.log(tableau);
+
+// Si je veux valeur 3
+// console.log(tableau[2]);
+
+// Ajoute une valeur au tableau
+tableau.push("valeur5");
+
+// console.log(tableau);
+
+// Transforme tableau en chaine de caractères
+// let tableau_chaine = tableau.toString();
+let tableau_chaine = tableau.join();
+
+// console.log( tableau_chaine );
+
+// Exercice palindrome
+// let mot_a_tester = prompt("Veuillez rentrer un mot");
+
+// Juste split, mot_a_tester devient un tableau
+// A partir de ce moment, je peux utiliser les méthodes de tableaux
+// Code spaghettis
+// .split() - devient un tableau
+// .reverse() - reste un tableau
+// .join()    - redevient une chaine
+// let inverse = mot_a_tester.split('').reverse().join('');
+
+// console.log(inverse);
+
+
+// LES CONDITIONNNELLES
+// if simple
+// if ( condition_a_tester ) {}
+
+// if - else
+// if( condition_a_tester ) {
+
+// } 
+// else {
+
+// }
+
+// if - else if - else
+// if( ) { 
+
+// } else if(  ) {
+
+// }
+// else {
+    
+// }
+
+
+// ATTENTION AUX ESPACES
+let chaine_espace = `MA 
+
+
+
+
+
+CHAINE DE CARACTERE`;
+
+// console.log(chaine_espace);
+
+
+// POUR LES COMPARAISONS :
+// && pour ET
+// || pour OR
+
+// Opérateurs de comparaison en JS
+// condition1 < condition2 
+// condition1 <= condition2 
+// condition1 >= condition2 
+// condition1 > condition2 
+// condition1 === condition2 
+// condition1 == condition2 
+// condition1 !== condition2 
+// condition1 != condition2 
+
+let variable_switch = 500;
+
+let message = '';
+
+// Structure conditionnelle
+switch(variable_switch) {
+    case 404 : message ="Not found"; break;
+    case 500 : message ="Erreur serveur"; break;
+    case 301 : message ="Redirection permanente"; break;
+    default  : message ="Désolé numéro erreur inconnu";
+}
+
+// console.log( message );
+
+
+// Opérateur ternaire, équivalent à un if else, VERSION PLUS COMPACTE
+
+let temperature = 20;
+
+// CONDITION A TESTER ? VALEUR SI VRAIE : VALEUR SI FAUX
+let etat = ( temperature > 0 ) ? "Liquide" : "Glace";
+
+// console.log(etat);
+
+
+let perso1 = ["Gandalf", "Le Gris", 100 ];
+
+// Version longue pour les tableaux
+// let prénom2 = perso1[0];
+// let nom2    = perso1[1];
+// let age2    = perso1[2];
+
+// Destructuration d'un tableau en variables
+let [prenom2, nom2, age2 ] = perso1;
+
+// console.log(prenom2);
+// console.log(nom2);
+// console.log(age2);
+
+// LES BOUCLES
+
+// while
+// do while
+
+// for (i=0; i<max; i++ )
+for(let i=0; i<7; i++) {
+    // console.log(" Bonjour le monde ");
+}
+
+// Autre orthographe pour for, équivalent à un foreach
+for( roudoudou of perso1 ) {
+    // console.log(roudoudou);
+}
+
+// 
+// while( condition ) {
+    // BIEN PENSER A TERMINER LA BOUCLE A UN MOMENT
+// }
+
+// do {
+//     console.log("Boucle do While");
+// } while( 25 > 50 );
+
+
+
+
+
+
+
+</script>    
+</body>
+</html>
+
+
+
+
+
+
+

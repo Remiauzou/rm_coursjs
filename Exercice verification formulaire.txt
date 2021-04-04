@@ -1,0 +1,8 @@
+- Dans le dossier assets/js, créez un script validation.js
+- Créez un fichier password_check.html et appelez le fichier js
+- le fichier html contient un formulaire avec un champs input de type text, renommez les id et classes en vous basant sur le template bootstrap
+- A partir des recommandations de la cnil :
+https://www.cnil.fr/fr/mots-de-passe-des-recommandations-de-securite-minimales-pour-les-entreprises-et-les-particuliers
+
+Vérifiez ce qu'un utilisateur rentre comme mot de passe et renvoyez un message sur les éléments qui ne respecteraient pas les conventions de type BLOG (12 caractères, etc)
+
