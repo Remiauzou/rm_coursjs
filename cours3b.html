@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // Souvent on  ira récupérer les datas sous forme de JSON ou texte :
+        // exemple, l'API Wordpress (JSON)
+
+        // On va utiliser une fonction "interne" à JS : fetch
+        
+
+        // GROS CLASSIQUE POUR RECUP DES DONNEES
+        // Première orthographe
+        // fetch('http://wordpress2.test/wp-json/wp/v2/posts')
+        
+        // // Récupère la promesse de traitement du json s'il le trouve 
+        // .then( function(reponse) {
+        //     // Retourne les données pour traitement
+        //     return reponse.json();
+        // })
+
+        // // Récupère les données pour traitement
+        // .then( function(datas) {
+        //     console.log(datas);
+        //     console.log(datas[0].title.rendered);
+        // });
+
+
+
+        // AUTRE SYNTAXE, PLUS COMPACTE
+        // Grace à 2 mots clefs : await et async
+
+        // Rien ne m'empêche de créer un erreur personnalisée
+        function ErreurPersonnalisé(statut) {
+            this.message = "Erreur personnalisée";
+            this.type_erreur = statut;
+            this.name = "ErreurURL";
+        }
+
+
+        async function chargeAPI(url) {
+
+            try {
+                let reponse = await fetch(url);
+                console.log(reponse);
+
+                // Gestion des erreurs
+                // Si pas ok, le script s'arrête ici
+                // if(!reponse.ok) throw new ErreurPersonnalisé(reponse.status);
+                if(!reponse.ok) throw new Error(reponse.status);
+
+                // Si ok, traite la suite
+                let datas = await reponse.json();
+
+                console.log(datas);
+
+            } catch(erreur) {
+                console.log(erreur.message)
+                console.log(erreur)
+            }
+        }
+
+        chargeAPI('http://wordpress2.test/wp-json/wp/v2/postss');
+
+        console.log("Reste du script");
+
+    // async function chargeAPI(url) {}
+
+    </script>
+</body>
+</html>

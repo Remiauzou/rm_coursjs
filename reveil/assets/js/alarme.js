@@ -29,8 +29,17 @@ function showDate() {
     refresh();
 }
 
+
+
+const formulaire = document.querySelector('#form1');
+const input1 = document.querySelector('input.nombre');
+const message_container = document.querySelector('.message');
+
 formulaire.addEventListener("submit", heureUtilisateur);
+    evenement.preventDefault();
 
-function heureUtilisateur(evenement) {
+// function heureUtilisateur(evenement) {
+//     if date ===
+// }
 
-}
+// message_container.innerHTML = input1;

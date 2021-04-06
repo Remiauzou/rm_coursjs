@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Structure de donnée type objet
+        // Equivalent tableau associatif en PHP
+        // Plutot que des clefs numeriques, ce sont des chaines
+        const personne1 = {
+            prenom: "Raphaël",
+            nom:    "Rouckout",
+            skills: ['JS','PHP','WORDPRESS'],
+            librairies: [
+                {nom:'React'},
+                {nom:'jQuery'}
+            ],
+        }
+
+        let prenom1 = personne1.prenom;
+        let nom1 = personne1.nom;
+        // Tableau classique
+        let competences1 = personne1.skills;
+
+        // Tableau d'objets
+        let librairies1 = personne1.librairies;
+        
+        
+        // console.log(prenom1);
+        // console.log(nom1);
+
+        // affiche JS
+        // console.log(competences1[0]);
+        // affiche React
+        // console.log(librairies1[0].nom);
+
+        // console.log('--------------------------');
+        // console.log('AVEC DESTRUCTURATION D\'OBJET');
+        // console.log('--------------------------');
+
+        // Destructuration d'objets
+        let {prenom, 
+            nom, 
+            skills: competences, 
+            librairies } = personne1;
+
+        // console.log(prenom);
+        // console.log(nom);
+        // console.log(competences[0]);
+        // console.log(librairies[0].nom);
+
+        // Spread operator : ...
+
+        // Avec un tableau
+        let [prenom2, nom2, ...caracteristiques] = ["Adrien", "Letertre","Educateur sportif", 32];
+
+        // console.log(prenom2);
+        // console.log(nom2);
+        // console.log(caracteristiques);
+
+        // Avec un objet
+        let {prenom:prenom3, ...reste} = personne1;
+
+        // console.log(prenom3);
+        // console.log(reste);
+
+
+        // Point important avec les opérateurs spreads
+        const dejeuner = ["Pain","Croissant","Café","Lait"];
+
+        // Créé une réelle copie et non pas une référence
+        const copie_dejeuner = [...dejeuner];
+
+        // comme :
+        // const copie_dejeuner = dejeuner;
+
+        // APPARTÉ
+        // Les constantes ne sont pas immutables
+        copie_dejeuner.push("Chocolat");
+            
+        // console.log(dejeuner);
+        // console.log(copie_dejeuner);
+        // console.log(dejeuner === copie_dejeuner);
+
+
+        const position = {x:0,y:0,z:0};
+
+        // On peut modifier à notre gré des objets constants
+        position.z = 150;
+
+        // On peut rajouter autant d'objets qu'on le souhaite à l'intérieur
+        position.whatever = 961;
+
+        // console.log(position);
+
+        // Provoquera une erreur
+        // position = {x:150,y:60,z:150};
+
+        // FIN APPARTÉ
+
+        // Opérateur REST pour les fonctions
+        // Par exemple, permet de distinguer les paramètres optionnels de ceux nécessaires
+        function fichePersonne(prenom, ...options) {
+            console.log(prenom);
+            console.log(options);
+        }
+
+        // fichePersonne("prenom", "nom", "age", "profession");
+        // fichePersonne("prenom2");
+
+        // Marche aussi dans l'autre sens :
+        // const nombres = [4,8,15,16,23,42];
+        // console.log(Math.max(...nombres));
+
+
+        
+
+
+
+    </script>
+</body>
+</html>
