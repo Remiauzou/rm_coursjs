@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table td {
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container planetes">
+        <table>
+            <tr>
+                <th>Photo</th>
+                <th>Nom</th>
+                <th>Satellites</th>
+            </tr>
+        </table>
+    </div>
+    <script type="module">
+        const API = 'https://api.le-systeme-solaire.net/rest/bodies/';
+        const tableau_planetes = document.querySelector('.planetes table');
+​
+        let requete = '?order=sideralOrbit,asc&filter[]=isPlanet,neq,false';
+        let planetes = [];
+​
+​
+        // Rien ne m'empêche de créer un erreur personnalisée
+        function ErreurPersonnalisé(statut) {
+            this.message = "Erreur personnalisée";
+            this.type_erreur = statut;
+            this.name = "ErreurURL";
+        }
+​
+        const chargeAPI = async (url) => {
+​
+            try {
+                let reponse = await fetch(API+url);
+​
+                // Gestion des erreurs
+                // Si pas ok, le script s'arrête ici
+                if(!reponse.ok) throw new ErreurPersonnalisé(reponse.status);
+​
+                // Si ok, traite la suite
+                let datas = await reponse.json();
+​
+                return datas;
+​
+​
+            } catch(erreur) {
+                console.log(erreur)
+            }
+        }
+​
+        async function init() {
+            planetes = await chargeAPI(requete);
+            afficherCorps(planetes.bodies);
+        }
+​
+        // Affichera les lunes
+        const afficherLunes = (lunes) => {
+            let liste_lunes = '<ul>';
+​
+            if(lunes !== null) {
+                liste_lunes += lunes.map(
+                    lune => `<li>${lune.moon}</li>`
+                );
+            }
+​
+            liste_lunes += '</ul>';
+​
+            return liste_lunes;
+        }
+​
+​
+        const afficherPhoto = (nom) => {
+            return `<img src="/assets/img/planetes/minis/${nom}.jpg">`
+        }
+​
+        const creeLigneTableau = ( {id,name:nom,moons:lunes} ) => {
+            return `
+            <tr>
+                <td>${ afficherPhoto(id) }</td>
+                <td> <h2> ${nom}</h2> </td>
+                <td>${ afficherLunes(lunes) }</td>
+            </tr>`
+        }
+​
+        // Affichera les planètes
+        const afficherCorps = (astres) => {
+​
+            // Equivalent à :
+            tableau_planetes.innerHTML += astres.map( 
+                planete => creeLigneTableau(planete)  
+            ); 
+        
+        } 
+​
+        init();
+​
+    </script>
+</body>
+</html>
